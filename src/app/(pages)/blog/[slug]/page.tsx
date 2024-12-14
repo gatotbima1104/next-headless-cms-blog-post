@@ -52,7 +52,10 @@ export default function Page() {
     <div className="w-[80%] mx-auto flex min-h-screen items-center flex-col px-5 py-10 gap-5">
       <h1 className="font-bold text-3xl">{article.title}</h1>
       <p className="text-xs italic">{ date }</p>
-      <Image alt="news-1" src={`https://${article.img?.fields.file.url}`} className="rounded-lg" width={900} height={900} />
+      <Image alt="news-1" src={article.img?.fields.file.url.startsWith('http') 
+                ? article.img.fields.file.url 
+                : `https://${article.img.fields.file.url.replace(/^\/+/, '')}`
+              } className="rounded-lg" width={900} height={900} />
 
       <h3 className="w-[80%] text-justify">
         <RichText document={article.content}/>
