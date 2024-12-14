@@ -101,7 +101,7 @@ export default function BlogPost() {
   return (
     <div className="mx-auto max-w-[80%] py-5 space-y-5">
       {/* <h1>Newest Articles</h1> */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 lg:flex-row sm:flex-col">
         {/* sidebar */}
         <div className="min-w-[300px]">
           <p className="p-2 font-bold text-xl">Search</p>

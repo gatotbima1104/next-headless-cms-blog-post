@@ -48,9 +48,9 @@ export default function HeroSection() {
         {mainArtcile.img && (
           <Link href={`blog/${mainArtcile.slug}`}>
             <Image 
-              src={`https://${mainArtcile.img.fields.file.url}`} 
+              src={`https://${mainArtcile.img?.fields.file.url}`} 
               alt='article' 
-              className='rounded sm:w-[300px] sm:h-[250px] lg:w-[2000px] lg:h-[400px] hover:scale-105 transition-all cursor-pointer' 
+              className='rounded hover:scale-105 transition-all cursor-pointer' 
               width={1000} 
               height={100} 
             />
