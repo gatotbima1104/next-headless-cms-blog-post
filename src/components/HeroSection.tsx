@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { contentfulClient } from '@/utils/contentfulClient'
 import RichText from './atom/RichText'
 import Link from 'next/link'
+import { IContentAsset } from '@/utils/types/contentful.types'
 
 export default function HeroSection() {
 
@@ -16,6 +17,7 @@ export default function HeroSection() {
 
       if (data.items.length > 0) {
         setMainArticle(data.items[0].fields); // Access fields directly
+        console.log(data.items[0].fields)
       } else {
         console.log("Article not found.");
       }
@@ -48,7 +50,10 @@ export default function HeroSection() {
         {mainArtcile.img && (
           <Link href={`blog/${mainArtcile.slug}`}>
             <Image 
-              src={`https://${mainArtcile.img?.fields.file.url}`} 
+              src={mainArtcile.img?.fields.file.url.startsWith('https://') 
+                ? mainArtcile.img.fields.file.url 
+                : `https://${mainArtcile.img.fields.file.url}`
+              }
               alt='article' 
               className='rounded hover:scale-105 transition-all cursor-pointer' 
               width={1000} 
