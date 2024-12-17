@@ -13,7 +13,9 @@ export default function HeroSection() {
 
   const fetchMainArtcle = async () => {
     try {
-      const data = await contentfulClient.getEntries()
+      const data = await contentfulClient.getEntries({
+        content_type: 'blogPost',
+      })
 
       if (data.items.length > 0) {
         setMainArticle(data.items[0].fields); // Access fields directly

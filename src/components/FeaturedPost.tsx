@@ -11,7 +11,9 @@ export default function FeaturedPost() {
 
   const getArticles = async () => {
     try {
-      const data = await contentfulClient.getEntries();
+      const data = await contentfulClient.getEntries({
+        content_type: 'blogPost',
+      });
       setArticle(data.items);
     } catch (error) {
       console.log(error);
